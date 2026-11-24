@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вивчення французької мови</title>
+    <link rel="stylesheet" href="lab11.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="lab11.js" defer></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <h1>French <span>Quiz</span></h1>
+            <button id="dictBtn" class="dict-btn" type="button"> Словник</button>
+        </header>
+
+        <main class="quiz-wrapper">
+            <div id="wordCard" class="word-card" title="Натисніть на картку для перевірки">
+                <span class="card-hint">Натисніть на картку, щоб перевірити</span>
+                <div id="frenchWord" class="french-word">...</div>
+                <div id="feedbackMsg" class="feedback-msg"></div>
+            </div>
+
+            <div class="step-controls">
+                <button id="prevBtn" class="nav-arrow" type="button" aria-label="Попереднє слово">←</button>
+                <span id="stepCounter" class="step-counter">1/10</span>
+                <button id="nextBtn" class="nav-arrow" type="button" aria-label="Наступне слово">→</button>
+            </div>
+
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="translationInput" 
+                    placeholder="Введіть переклад українською..." 
+                    autocomplete="off"
+                >
+                <div id="validationError" class="validation-error"></div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stats-title">Статистика</div>
+                <div class="stats-grid">
+                    <div class="stat-item correct">
+                        <span class="stat-label">Вірно</span>
+                        <span id="correctCount" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-item wrong">
+                        <span class="stat-label">Невірно</span>
+                        <span id="wrongCount" class="stat-value">0</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="dictModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Словник слів</h2>
+                <button class="close-modal" data-close="dictModal" type="button">&times;</button>
+            </div>
+            <ul id="dictList" class="dict-list"></ul>
+        </div>
+    </div>
+
+    <div id="resultModal" class="modal-overlay">
+        <div class="modal-box result-box">
+            <h2>Тест завершено!</h2>
+            <p class="result-score">Правильних відповідей: <strong id="finalScore">0/10</strong></p>
+            <p id="levelDescription" class="level-desc"></p>
+            <button id="restartBtn" class="restart-btn" type="button">Пройти ще раз</button>
+        </div>
+    </div>
+</body>
+</html>
